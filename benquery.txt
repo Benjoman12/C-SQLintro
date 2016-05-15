@@ -1,0 +1,8 @@
+SELECT * 
+FROM Users
+
+
+INSERT Users VALUES('testUser', 'testPass')
+
+Delete From Users Where Username = 'Username'
+

@@ -36,7 +36,7 @@ namespace Bensqloginwindowsforms
             //adapter = new SqlDataAdapter(command);
             
             connection.Close();
-
+            // blah blah blah
 
               
 
