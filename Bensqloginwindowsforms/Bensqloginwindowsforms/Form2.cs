@@ -15,11 +15,36 @@ namespace Bensqloginwindowsforms
         public Form2()
         {
             InitializeComponent();
+
+
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(@"Server = BENJOPC\BENSERVER; Database = BenJammin; User = sa; Password = AlphaZulu1;");
+            //SqlCommand command = new SqlCommand("", connection);
+            SqlCommand command = new SqlCommand("", connection);
+            SqlDataAdapter adapter;
+
+            DataTable table = new DataTable();
+            string username = textBox1.Text;
+            string password = textBox2.Text;
+
+            connection.Open();
+            command.CommandText = string.Format("SELECT * FROM Users WHERE Username = '{0}' AND Password = '{1}'", username, password);
+            command.CommandType = System.Data.CommandType.Text;
+
+            adapter = new SqlDataAdapter(command);
+            adapter.Fill(table);
+            connection.Close();
+
+
+        }
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection("Server = GMRDLT1; Database=BenloginDB; User = sa; Password = GreatMinds110;");
+            SqlConnection connection = new SqlConnection(@"Server = BENJOPC\BENSERVER; Database = BenJammin; User = sa; Password = AlphaZulu1;");
             SqlCommand command = new SqlCommand("", connection);
             SqlDataAdapter adapter;
 
@@ -51,7 +76,8 @@ namespace Bensqloginwindowsforms
         {
 
         }
-        
+
+
 
     }
 }

@@ -19,7 +19,7 @@ namespace Bensqloginwindowsforms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection("Server = GMRDLT1; Database= BenloginDB; User = sa; Password = GreatMinds110;");
+            SqlConnection connection = new SqlConnection(@"Server = BENJOPC\BENSERVER; Database = BenJammin ; User = sa ; Password = AlphaZulu1;");
             SqlCommand command = new SqlCommand("", connection);
             SqlDataAdapter adapter;
 
