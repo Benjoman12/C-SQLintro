@@ -63,6 +63,11 @@ namespace Bensqloginwindowsforms
            if(table.Rows.Count > 0)
            {
                label3.Visible = true;
+               if (label3.Visible == true && textBox1.Text.Contains("Benjoman12") && textBox2.Text.Contains("AlphaZulu1"))
+               {
+               Form4 Form = new Form4();
+               Form.ShowDialog();
+               }
            }
            else
            {
@@ -77,7 +82,7 @@ namespace Bensqloginwindowsforms
 
         }
 
-
+     
 
     }
 }

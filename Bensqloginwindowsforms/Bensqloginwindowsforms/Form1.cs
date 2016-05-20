@@ -62,5 +62,16 @@ namespace Bensqloginwindowsforms
 
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form3 Form = new Form3();
+            Form.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
