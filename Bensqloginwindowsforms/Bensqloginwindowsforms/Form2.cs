@@ -21,22 +21,6 @@ namespace Bensqloginwindowsforms
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(@"Server = BENJOPC\BENSERVER; Database = BenJammin; User = sa; Password = AlphaZulu1;");
-            //SqlCommand command = new SqlCommand("", connection);
-            SqlCommand command = new SqlCommand("", connection);
-            SqlDataAdapter adapter;
-
-            DataTable table = new DataTable();
-            string username = textBox1.Text;
-            string password = textBox2.Text;
-
-            connection.Open();
-            command.CommandText = string.Format("SELECT * FROM Users WHERE Username = '{0}' AND Password = '{1}'", username, password);
-            command.CommandType = System.Data.CommandType.Text;
-
-            adapter = new SqlDataAdapter(command);
-            adapter.Fill(table);
-            connection.Close();
 
 
         }
@@ -53,9 +37,11 @@ namespace Bensqloginwindowsforms
             string password = textBox2.Text;
 
             connection.Open();
-            command.CommandText = string.Format("SELECT * FROM Users WHERE Username = '{0}' AND Password = '{1}'", username, password);
-            command.CommandType = System.Data.CommandType.Text;
-
+            command.CommandText = "usp_Login";
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Username", username));
+            command.Parameters.Add(new SqlParameter("@Password", password));
+           
             adapter = new SqlDataAdapter(command);
             adapter.Fill(table);
             connection.Close();

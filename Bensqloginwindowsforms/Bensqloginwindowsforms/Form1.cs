@@ -19,6 +19,7 @@ namespace Bensqloginwindowsforms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             SqlConnection connection = new SqlConnection(@"Server = BENJOPC\BENSERVER; Database = BenJammin ; User = sa ; Password = AlphaZulu1;");
             SqlCommand command = new SqlCommand("", connection);
             SqlDataAdapter adapter;
@@ -28,17 +29,29 @@ namespace Bensqloginwindowsforms
             string password = textBox2.Text;
 
             connection.Open();
-            command.CommandText = String.Format("INSERT Users VALUES('{0}','{1}')", username, password);
             command.CommandType = System.Data.CommandType.Text;
+            command.CommandText = "Usp_adduser";
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.Add(new SqlParameter("@Username",username ));
+            command.Parameters.Add(new SqlParameter("@Password", password));
 
-            command.ExecuteNonQuery();
+            try
+            {
+                command.ExecuteNonQuery();
+            }
+            catch
+            {
+                MessageBox.Show("Username is already in use");
+            }
 
             //adapter = new SqlDataAdapter(command);
             
             connection.Close();
             // blah blah blah
 
-              
+
+            Form2 Form = new Form2();
+            Form.ShowDialog();
 
 
         }
@@ -65,8 +78,8 @@ namespace Bensqloginwindowsforms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Form3 Form = new Form3();
-            Form.ShowDialog();
+            //Form3 Form = new Form3();
+            //Form.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
