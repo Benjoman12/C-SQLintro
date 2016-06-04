@@ -49,6 +49,7 @@ namespace Bensqloginwindowsforms
             connection.Close();
             // blah blah blah
 
+            
 
             Form2 Form = new Form2();
             Form.ShowDialog();
