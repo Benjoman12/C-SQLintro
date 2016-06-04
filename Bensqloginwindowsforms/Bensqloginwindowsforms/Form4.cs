@@ -52,7 +52,7 @@ namespace Bensqloginwindowsforms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            listBox1.Items.Clear();
             command = new SqlCommand("", connection);
             
             DataTable table = new DataTable();
